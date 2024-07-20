@@ -57,8 +57,14 @@ public class MyIsosceles extends MyDrawing {
 
         //draw the "select rectangle"
         if (isSelected) {
-            super.draw(g);
-        }  
+            // Draw rectangles at each vertex of the isosceles
+            g2.setColor(Color.BLACK); // Color for the selection rectangles
+            for (int i = 0; i < isos.npoints; i++) {
+                int px = isos.xpoints[i];
+                int py = isos.ypoints[i];
+                g2.fillRect(px - SIZE / 2, py - SIZE / 2, SIZE, SIZE);
+            }
+        }
     }
 
     private Polygon createIsos(int x, int y, int w, int h) {
@@ -73,4 +79,9 @@ public class MyIsosceles extends MyDrawing {
         }
         return polygon;
     }
+
+    public void setRegion() {
+       Polygon isosceles = createIsos(x, y, w, h);
+       region = isosceles;
+   }
 }

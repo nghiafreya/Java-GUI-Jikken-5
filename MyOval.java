@@ -1,4 +1,5 @@
 import java.awt.*;
+import java.awt.geom.Ellipse2D;
 public class MyOval extends MyDrawing {
 
 
@@ -9,6 +10,7 @@ public class MyOval extends MyDrawing {
         setSize(width, height);
         setLineColor(lineColor);
         setFillColor(fillColor);
+        setRegion();
     }
 
     
@@ -54,9 +56,16 @@ public class MyOval extends MyDrawing {
 
         //draw the "select rectangle"
         if (isSelected) {
-            super.draw(g);
+            g.setColor(Color.BLACK);
+            g.fillRect(x+w/2 - SIZE/2, y - SIZE/2, SIZE, SIZE);
+            g.fillRect(x - SIZE/2, y+h/2 - SIZE/2, SIZE, SIZE);
+            g.fillRect(x+w/2 - SIZE/2, y+h - SIZE/2, SIZE, SIZE);
+            g.fillRect(x+w - SIZE/2, y+h/2 - SIZE/2, SIZE, SIZE);
         }  
-
-
     }
+
+    public void setRegion() {
+        region = new Ellipse2D.Double(x, y, w, h);    
+    }
+    
 }

@@ -1,5 +1,6 @@
 import java.awt.*; 
 import java.io.*; 
+import java.awt.geom.*;
 
 public class MyDrawing implements Cloneable, Serializable {
     int x, y, w, h;
@@ -33,18 +34,7 @@ public class MyDrawing implements Cloneable, Serializable {
     }
     
     public void draw(Graphics g) {
-        if(isSelected) {
-            g.setColor(Color.BLACK);
-            g.fillRect(x+w/2 - SIZE/2, y - SIZE/2, SIZE, SIZE);
-            g.fillRect(x - SIZE/2, y+h/2 - SIZE/2, SIZE, SIZE);
-            g.fillRect(x+w/2 - SIZE/2, y+h - SIZE/2, SIZE, SIZE);
-            g.fillRect(x+w - SIZE/2, y+h/2 - SIZE/2, SIZE, SIZE);
-            g.fillRect(x - SIZE/2, y - SIZE/2, SIZE, SIZE);
-            g.fillRect(x+w - SIZE/2, y - SIZE/2, SIZE, SIZE);
-            g.fillRect(x - SIZE/2, y+h - SIZE/2, SIZE, SIZE);
-            g.fillRect(x+w - SIZE/2, y+h - SIZE/2, SIZE, SIZE); 
-
-        }
+        
     }
 
     /*task 3-1*/
@@ -71,9 +61,7 @@ public class MyDrawing implements Cloneable, Serializable {
     }
     
     public void setRegion() {
-        //MyDrawingを継承する子クラス内でそれぞれ定義する
-        //包含判定図形が矩形ならば、例えば、
-        region = new Rectangle(x, y, w, h);
+    
     }
 /******** */
 

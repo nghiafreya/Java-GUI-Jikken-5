@@ -56,8 +56,14 @@ public class MyHendecagonal extends MyDrawing {
 
         //draw the "select rectangle"
         if (isSelected) {
-            super.draw(g);
-        }  
+        // Draw rectangles at each vertex of the hendecagonal
+            g2.setColor(Color.BLACK); // Color for the selection rectangles
+            for (int i = 0; i < hende.npoints; i++) {
+                int px = hende.xpoints[i];
+                int py = hende.ypoints[i];
+                g2.fillRect(px - SIZE / 2, py - SIZE / 2, SIZE, SIZE);
+            }
+        }
     }
 
     private Polygon createHende(int x, int y, int w, int h) {
@@ -71,6 +77,11 @@ public class MyHendecagonal extends MyDrawing {
             polygon.addPoint(px, py);
         }
         return polygon;
+    }
+
+    public void setRegion() {
+        Polygon hendecagonal = createHende(x, y, w, h);
+        region = hendecagonal;
     }
 }
      

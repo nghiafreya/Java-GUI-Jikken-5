@@ -199,9 +199,11 @@ public class MyApplication extends JFrame{
         menuBar.add(FileMenu);
 
         /************************** */
-        //課題5: Move up, move down
-        
+        //課題5: 
+        //拡張例10: 図形の重なり順序操作 
 
+        //Move up, move down menu
+        
         MoveUpDownMenu = new JMenu("Move To");
         upMostItem = new JMenuItem("Move To Upmost");
         upItem = new JMenuItem("Move Up");

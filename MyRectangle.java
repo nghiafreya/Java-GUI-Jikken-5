@@ -8,6 +8,7 @@
             setSize(width, height);
             setLineColor(lineColor);
             setFillColor(fillColor);
+            setRegion();
         }
 
         @Override
@@ -52,7 +53,19 @@
 
             //draw the "select rectangle"
             if (isSelected) {
-                super.draw(g);
+                g.setColor(Color.BLACK);
+                g.fillRect(x+w/2 - SIZE/2, y - SIZE/2, SIZE, SIZE);
+                g.fillRect(x - SIZE/2, y+h/2 - SIZE/2, SIZE, SIZE);
+                g.fillRect(x+w/2 - SIZE/2, y+h - SIZE/2, SIZE, SIZE);
+                g.fillRect(x+w - SIZE/2, y+h/2 - SIZE/2, SIZE, SIZE);
+                g.fillRect(x - SIZE/2, y - SIZE/2, SIZE, SIZE);
+                g.fillRect(x+w - SIZE/2, y - SIZE/2, SIZE, SIZE);
+                g.fillRect(x - SIZE/2, y+h - SIZE/2, SIZE, SIZE);
+                g.fillRect(x+w - SIZE/2, y+h - SIZE/2, SIZE, SIZE); 
             }            
         }
+        public void setRegion() {
+            region = new Rectangle(x, y, w, h);    
+        }
     }
+
