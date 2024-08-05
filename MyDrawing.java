@@ -1,6 +1,7 @@
 import java.awt.*; 
 import java.io.*; 
 import java.awt.geom.*;
+import java.awt.image.BufferedImage; 
 
 public class MyDrawing implements Cloneable, Serializable {
     int x, y, w, h;
@@ -17,6 +18,25 @@ public class MyDrawing implements Cloneable, Serializable {
         fillColor =Color.white;
         lineWidth = 1;
         setRegion();
+    }
+
+    public void applyGrayscale(Graphics g) {
+        BufferedImage image = new BufferedImage(w, h, BufferedImage.TYPE_INT_ARGB);
+        Graphics2D g2 = image.createGraphics();
+        draw(g2); // Draw the shape onto the BufferedImage
+        g2.dispose();
+
+        for (int y = 0; y < image.getHeight(); y++) {
+            for (int x = 0; x < image.getWidth(); x++) {
+                Color color = new Color(image.getRGB(x, y));
+                int gray = (int) (color.getRed() * 0.3 + color.getGreen() * 0.59 + color.getBlue() * 0.11);
+                Color grayscaleColor = new Color(gray, gray, gray);
+                image.setRGB(x, y, grayscaleColor.getRGB());
+            }
+        }
+
+        g.drawImage(image, this.x, this.y, null);
+        
     }
 
     @Override

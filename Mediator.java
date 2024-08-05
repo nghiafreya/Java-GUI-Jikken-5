@@ -129,7 +129,8 @@ public class Mediator{
         if (!selectedDrawings.isEmpty()) {
             for (MyDrawing d : selectedDrawings) {
                 buffer.add(d.clone());
-            }
+                d.isSelected = false;
+            }    
         } else {
             //do nothing if the buffer is empty
         }
@@ -142,6 +143,7 @@ public class Mediator{
             for (MyDrawing d : selectedDrawings) {
                 buffer.add(d.clone());
                 removeDrawing(d);
+                d.isSelected = false;
             }
             repaint();
         } else {
@@ -157,10 +159,11 @@ public class Mediator{
                 MyDrawing clone = d.clone();
                 int newX = d.getX();
                 int newY = d.getY();
-                clone.setLocation(newX, newY);
+                clone.setLocation(newX+10, newY+10);
                 addDrawing(clone);
+                clone.setSelected(false);
                 repaint();
-                d.move(10, 10);
+                d.move(10, 10);         
             }
         }
 

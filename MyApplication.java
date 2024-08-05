@@ -77,10 +77,6 @@ public class MyApplication extends JFrame{
         getContentPane().add(function, BorderLayout.SOUTH);
         getContentPane().add(canvas, BorderLayout.CENTER);
         /**************************** */
-        //create a panel named COPYPASTE
-        JPanel COPYPASTE = new JPanel();
-        COPYPASTE.setLayout(new FlowLayout());
-
 
         // Add Cut, Copy, Paste buttons
         JButton cutButton = new JButton("Cut");
@@ -89,7 +85,7 @@ public class MyApplication extends JFrame{
                 med.cut();
             }
         });
-        COPYPASTE.add(cutButton);
+        function.add(cutButton);
 
         JButton copyButton = new JButton("Copy");
         copyButton.addActionListener(new ActionListener() {
@@ -97,7 +93,7 @@ public class MyApplication extends JFrame{
                 med.copy();
             }
         });
-        COPYPASTE.add(copyButton);
+        function.add(copyButton);
 
         JButton pasteButton = new JButton("Paste");
         pasteButton.addActionListener(new ActionListener() {
@@ -105,10 +101,8 @@ public class MyApplication extends JFrame{
                 med.paste(0, 0);
             }
         });
-        COPYPASTE.add(pasteButton);
+        function.add(pasteButton);
 
-        getContentPane().add(COPYPASTE, BorderLayout.WEST);
-        getContentPane().add(canvas, BorderLayout.CENTER);
 /*********************** */
 
 
@@ -373,7 +367,7 @@ class MoveDownMostListener implements ActionListener {
     /***************** */
 
     public Dimension getPreferredSize() {
-        return new Dimension(600, 400);
+        return new Dimension(800, 400);
     }
 
     public static void main(String[] args) {
